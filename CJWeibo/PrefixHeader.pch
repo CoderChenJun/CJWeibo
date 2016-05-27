@@ -1,0 +1,104 @@
+//
+//  PrefixHeader.pch
+//  CJWeibo
+//
+//  Created by app on 16/5/23.
+//  Copyright © 2016年 ChenJun. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
+
+
+
+
+
+
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+
+
+
+
+#import "CJTabBarButton.h"
+
+#import "UIImage+CJ.h"
+#import "UIBarButtonItem+CJ.h"
+#import "CJSearchBar.h"
+#import "CJTitleButton.h"
+#import "CJWeiboTool.h"
+
+#import "CJAccount.h"
+#import "CJAccountTool.h"
+
+#import "CJStatus.h"
+#import "CJUser.h"
+
+
+
+#import "AFNetworking.h"
+#import "MBProgressHUD+CJ.h"
+#import "UIImageView+WebCache.h"
+#import "MJExtension.h"
+
+
+
+
+// 1.判断是否为iOS7
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+
+// 2.RGB颜色
+#define CJColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+
+// 4.自定义Log
+#ifdef DEBUG
+#define CJLog(...) NSLog(__VA_ARGS__)
+#else
+#define CJLog(...)
+#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** 联网服务器的IP地址 */
+#define CJIP @"192.168.0.102"
+//     NSString *a = [NSString stringWithFormat:@"http://%@:8080/demo/servlet/LoginServlet",CJIP];
+
+#define CJIPCONFIG @"192.168.1.47:8080/myweb"
+//NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/servlet/MessageServlet",CJIPCONFIG]];
+
+
+
+
+#endif
+
+
+
