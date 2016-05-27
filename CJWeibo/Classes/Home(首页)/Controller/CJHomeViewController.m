@@ -12,7 +12,7 @@
 @interface CJHomeViewController ()
 
 
-@property (nonatomic, strong) NSArray *statuses;
+@property (nonatomic, strong) NSArray *statusFrames;
 
 
 
@@ -78,8 +78,31 @@
 //          self.statuses = statusArray;
 
           
+          
+          
+          
           // 将字典数组转为模型数组(里面放的就是CJStatus模型)
-          self.statuses = [CJStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+          NSArray *statusArray = [CJStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+          
+          
+          
+          // 创建frame模型对象(将微博数据模型转成 frame 模型)
+          NSMutableArray *statusFrameArray = [NSMutableArray array];
+          for (CJStatus *status in statusArray)
+          {
+              CJStatusFrame *statusFrame = [[CJStatusFrame alloc] init];
+              // 传递微博模型数据
+              statusFrame.status = status;
+              [statusFrameArray addObject:statusFrame];
+          }
+  
+          
+          
+          // 赋值
+          self.statusFrames = statusFrameArray;
+          
+          
+          
           // 异步网络请求成功可能会延迟，所以要重新刷新表格
           [self.tableView reloadData];
           
@@ -167,46 +190,46 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return self.statuses.count;
+    return self.statusFrames.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 1.创建cell
-    static NSString *ID = @"cell";
-    // 从缓存池中取cell
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    // 如果缓存池中没有，则重新创建
-    if(cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-    }
+    CJStatusCell *cell = [CJStatusCell cellWithTableView:tableView];
     
     
-    // 2.设置cell的数据
+    // 2.传递frame模型
+    cell.statusFrame = self.statusFrames[indexPath.row];
     
-    // 取出微博模型
-    CJStatus *status = self.statuses[indexPath.row];
-    // 微博的文字(内容)
-    cell.textLabel.text = status.text;
-    // 取出用户模型
-    CJUser *user = status.user;
-    // 微博作者的昵称
-    cell.detailTextLabel.text = user.name;
-    // 微博作者的头像
-    // SDWebimage 框架(异步下载图片)
-    NSString *iconUrl = user.profile_image_url;
-//    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:iconUrl]];
-//    cell.imageView.image = [UIImage imageWithData:imageData];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:iconUrl] placeholderImage:[UIImage imageWithNamed:@"new_feature_share_false"]];
     
+//    // 取出微博模型
+//    CJStatus *status = self.statusFrames[indexPath.row];
+//    // 微博的文字(内容)
+//    cell.textLabel.text = status.text;
+//    // 取出用户模型
+//    CJUser *user = status.user;
+//    // 微博作者的昵称
+//    cell.detailTextLabel.text = user.name;
+//    // 微博作者的头像
+//    // SDWebimage 框架(异步下载图片)
+//    NSString *iconUrl = user.profile_image_url;
+////    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:iconUrl]];
+////    cell.imageView.image = [UIImage imageWithData:imageData];
+//    [cell.imageView setImageWithURL:[NSURL URLWithString:iconUrl] placeholderImage:[UIImage imageWithNamed:@"avatar_default_small"]];
     
     
     
     
     // 3.返回cell
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CJStatusFrame *statusFrame = self.statusFrames[indexPath.row];
+    return statusFrame.cellHight;
 }
 
 

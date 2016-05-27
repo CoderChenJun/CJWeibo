@@ -63,6 +63,8 @@
 		DD9818231CF7EF740063858B /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9818131CF7EF740063858B /* UIView+WebCacheOperation.m */; };
 		DD9818261CF7FFDC0063858B /* CJStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9818251CF7FFDC0063858B /* CJStatus.m */; };
 		DD9818291CF802110063858B /* CJUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9818281CF802110063858B /* CJUser.m */; };
+		DDAC9B0B1CF819A000EDF983 /* CJStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B0A1CF819A000EDF983 /* CJStatusCell.m */; };
+		DDAC9B0E1CF8242300EDF983 /* CJStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B0D1CF8242300EDF983 /* CJStatusFrame.m */; };
 		DDC842E01CF80A9200996C65 /* MJArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC842CE1CF80A9200996C65 /* MJArgument.m */; };
 		DDC842E11CF80A9200996C65 /* MJIvar.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC842D11CF80A9200996C65 /* MJIvar.m */; };
 		DDC842E21CF80A9200996C65 /* MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC842D31CF80A9200996C65 /* MJMember.m */; };
@@ -204,6 +206,10 @@
 		DD9818251CF7FFDC0063858B /* CJStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJStatus.m; path = "CJWeibo/Classes/Home(首页)/Model/CJStatus.m"; sourceTree = SOURCE_ROOT; };
 		DD9818271CF802110063858B /* CJUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJUser.h; path = "CJWeibo/Classes/Home(首页)/Model/CJUser.h"; sourceTree = SOURCE_ROOT; };
 		DD9818281CF802110063858B /* CJUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJUser.m; path = "CJWeibo/Classes/Home(首页)/Model/CJUser.m"; sourceTree = SOURCE_ROOT; };
+		DDAC9B091CF819A000EDF983 /* CJStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJStatusCell.h; path = "CJWeibo/Classes/Home(首页)/View/CJStatusCell.h"; sourceTree = SOURCE_ROOT; };
+		DDAC9B0A1CF819A000EDF983 /* CJStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJStatusCell.m; path = "CJWeibo/Classes/Home(首页)/View/CJStatusCell.m"; sourceTree = SOURCE_ROOT; };
+		DDAC9B0C1CF8242300EDF983 /* CJStatusFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJStatusFrame.h; path = "CJWeibo/Classes/Home(首页)/Model/CJStatusFrame.h"; sourceTree = SOURCE_ROOT; };
+		DDAC9B0D1CF8242300EDF983 /* CJStatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJStatusFrame.m; path = "CJWeibo/Classes/Home(首页)/Model/CJStatusFrame.m"; sourceTree = SOURCE_ROOT; };
 		DDC842CD1CF80A9200996C65 /* MJArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJArgument.h; sourceTree = "<group>"; };
 		DDC842CE1CF80A9200996C65 /* MJArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJArgument.m; sourceTree = "<group>"; };
 		DDC842CF1CF80A9200996C65 /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
@@ -345,6 +351,8 @@
 				DD9818251CF7FFDC0063858B /* CJStatus.m */,
 				DD9818271CF802110063858B /* CJUser.h */,
 				DD9818281CF802110063858B /* CJUser.m */,
+				DDAC9B0C1CF8242300EDF983 /* CJStatusFrame.h */,
+				DDAC9B0D1CF8242300EDF983 /* CJStatusFrame.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -354,6 +362,8 @@
 			children = (
 				DD9817441CF7CE4A0063858B /* CJTitleButton.h */,
 				DD9817451CF7CE4A0063858B /* CJTitleButton.m */,
+				DDAC9B091CF819A000EDF983 /* CJStatusCell.h */,
+				DDAC9B0A1CF819A000EDF983 /* CJStatusCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -869,6 +879,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDAC9B0B1CF819A000EDF983 /* CJStatusCell.m in Sources */,
 				DD9818261CF7FFDC0063858B /* CJStatus.m in Sources */,
 				DD9817BB1CF7CE4A0063858B /* AFURLRequestSerialization.m in Sources */,
 				DD9817BA1CF7CE4A0063858B /* AFURLConnectionOperation.m in Sources */,
@@ -916,6 +927,7 @@
 				DD9817A31CF7CE4A0063858B /* CJHomeViewController.m in Sources */,
 				DD9818171CF7EF740063858B /* SDWebImageCompat.m in Sources */,
 				DDC842E71CF80A9200996C65 /* NSObject+MJKeyValue.m in Sources */,
+				DDAC9B0E1CF8242300EDF983 /* CJStatusFrame.m in Sources */,
 				DD9818151CF7EF740063858B /* NSData+ImageContentType.m in Sources */,
 				DD9817A91CF7CE4A0063858B /* CJTabBarButton.m in Sources */,
 				DD9817B11CF7CE4A0063858B /* AppDelegate.m in Sources */,

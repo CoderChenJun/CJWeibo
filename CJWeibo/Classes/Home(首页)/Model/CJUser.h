@@ -26,6 +26,19 @@
  */
 @property (nonatomic, copy) NSString *profile_image_url;
 
+/**
+ *  是否为vip
+ */
+@property (nonatomic, assign, getter = isVip) BOOL vip;
+
+
+
+
+
+
+
+
+
 
 // 用了MJExtension框架，就不必这么繁琐的转换
 //+ (instancetype)userWithDict:(NSDictionary *)dict;

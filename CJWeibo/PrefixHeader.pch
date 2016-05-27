@@ -47,6 +47,8 @@
 
 #import "CJStatus.h"
 #import "CJUser.h"
+#import "CJStatusFrame.h"
+#import "CJStatusCell.h"
 
 
 
