@@ -7,6 +7,7 @@
 //
 
 #import "CJStatusTopView.h"
+#import "CJRetweetStatusView.h"
 
 
 @interface CJStatusTopView()
@@ -27,6 +28,15 @@
 @property (nonatomic, strong) UILabel *sourceLabel;
 /** 正文\内容 */
 @property (nonatomic, strong) UILabel *contentLabel;
+
+
+
+
+
+/** 被转发微博的View(父控件) */
+@property (nonatomic, strong) CJRetweetStatusView *retweetView;
+
+
 
 @end
 
@@ -141,6 +151,16 @@
         self.contentLabel = contentLabel;
         
         
+        
+        
+        
+        
+        /** 9.被转发微博的View(父控件) */
+        CJRetweetStatusView *retweetView = [[CJRetweetStatusView alloc] init];
+        [self addSubview:retweetView];
+        self.retweetView = retweetView;
+        
+        
     }
     return self;
 }
@@ -152,26 +172,38 @@
 
 
 
-
+/**
+ *  在这个方法中设置子控件的frame数据和显示数据
+ */
 - (void)setStatusFrame:(CJStatusFrame *)statusFrame
 {
     _statusFrame = statusFrame;
     
+    // 1. 设置原创微博数据
+    [self setupOriginalData];
     
+    // 2.设置被转发微博数据
+    [self  setupRetweetData];
     
-    
+}
+
+/**
+ *  设置原创微博数据
+ */
+- (void)setupOriginalData
+{
     // 1.取出模型数据
     CJStatus *status = self.statusFrame.status;
     CJUser *user = status.user;
- 
+    
     // 2.头像
     [self.iconView setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageWithNamed:@"avatar_default_small"]];
     self.iconView.frame = self.statusFrame.iconViewF;
-
+    
     // 3.昵称
     self.nameLabel.text = user.name;
     self.nameLabel.frame = self.statusFrame.nameLabelF;
-
+    
     // 4.vip
     if (user.mbtype)
     {
@@ -186,7 +218,7 @@
         self.vipView.hidden = YES;
         self.nameLabel.textColor = [UIColor blackColor];// 如果不是会员,昵称文字黑色
     }
-
+    
     // 5.时间
     self.timeLabel.text = status.created_at;
     // 因为时间显示的内容随时变化,所以需重新计算frame
@@ -225,9 +257,36 @@
     {
         self.photoView.hidden = YES;
     }
-    
-
 }
+
+/**
+ *  设置被转发微博数据
+ */
+- (void)setupRetweetData
+{
+    
+    CJStatus *retweetStatus = self.statusFrame.status.retweeted_status;
+    
+    // 1.父控件retweetView
+    // 如果有转发微博,赋值数据并显示
+    if (retweetStatus)
+    {
+        
+        self.retweetView.hidden = NO;
+        
+        // 2.设置整体的frame
+        self.retweetView.frame = self.statusFrame.retweetViewF;
+        
+        // 3.传递模型数据
+        self.retweetView.statusFrame = self.statusFrame;
+    }
+    else
+    {
+        self.retweetView.hidden = YES;
+    }
+    
+}
+
 
 
 
