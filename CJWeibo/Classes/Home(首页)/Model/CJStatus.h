@@ -34,10 +34,13 @@
  */
 @property (nonatomic, copy) NSString *idstr;
 
-/**
- *  微博的单张配图
- */
-@property (nonatomic, copy) NSString *thumbnail_pic;
+
+
+
+///**
+// *  微博的单张配图
+// */
+//@property (nonatomic, copy) NSString *thumbnail_pic;
 
 
 

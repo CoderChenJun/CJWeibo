@@ -17,7 +17,7 @@
 /** 被转发微博的正文\内容 */
 @property (nonatomic, strong) UILabel *retweetContentLabel;
 /** 被转发微博的配图 */
-@property (nonatomic, strong) UIImageView *retweetPhotoView;
+@property (nonatomic, strong) CJPhotosView *retweetPhotosView;
 
 
 @end
@@ -65,9 +65,9 @@
         
         
         /** 4.被转发微博的配图 */
-        UIImageView *retweetPhotoView = [[UIImageView alloc] init];
-        [self addSubview:retweetPhotoView];
-        self.retweetPhotoView = retweetPhotoView;
+        CJPhotosView *retweetPhotosView = [[CJPhotosView alloc] init];
+        [self addSubview:retweetPhotosView];
+        self.retweetPhotosView = retweetPhotosView;
         
     }
     return self;
@@ -102,15 +102,15 @@
     self.retweetContentLabel.frame = self.statusFrame.retweetContentLabelF;
     
     // 3.配图
-    if (retweetStatus.thumbnail_pic)
+    if (retweetStatus.pic_urls.count)
     {
-        self.retweetPhotoView.hidden = NO;
-        self.retweetPhotoView.frame = self.statusFrame.retweetPhotoViewF;
-        [self.retweetPhotoView setImageWithURL:[NSURL URLWithString:retweetStatus.thumbnail_pic] placeholderImage:[UIImage imageWithNamed:@"timeline_image_placeholder"]];
+        self.retweetPhotosView.hidden = NO;
+        self.retweetPhotosView.frame = self.statusFrame.retweetPhotosViewF;
+        self.retweetPhotosView.photos = retweetStatus.pic_urls;
     }
     else
     {
-        self.retweetPhotoView.hidden = YES;
+        self.retweetPhotosView.hidden = YES;
     }
 
     

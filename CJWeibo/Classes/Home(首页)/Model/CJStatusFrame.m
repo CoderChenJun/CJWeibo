@@ -108,13 +108,13 @@
     
 #pragma mark - 如果原创微博有图片 - 计算微博图片的frame
     // 8.配图
-    if (status.thumbnail_pic)
+    if (status.pic_urls.count)
     {
-        CGFloat photoViewX = contentLabelX;
-        CGFloat photoViewY = CGRectGetMaxY(_contentLabelF) +CJStatusCellBorder * 0.5;
-        CGFloat photoViewW = 70;
-        CGFloat photoViewH = 70;
-        _photoViewF = CGRectMake(photoViewX, photoViewY, photoViewW, photoViewH);
+#warning 根据图片个数计算整个相册的尺寸
+        CGSize photosViewSize = [CJPhotosView photosViewSizeWithPhotosCount:status.pic_urls.count];
+        CGFloat photosViewX = contentLabelX;
+        CGFloat photosViewY = CGRectGetMaxY(_contentLabelF) + CJStatusCellBorder;
+        _photosViewF = CGRectMake(photosViewX, photosViewY, photosViewSize.width, photosViewSize.height);
     }
     
     
@@ -149,21 +149,21 @@
         
 #pragma mark - 如果被转发微博有配图 - 计算被转发微博的配图的frame
         // 12.被转发微博的配图
-        if (status.retweeted_status.thumbnail_pic)
+        if (status.retweeted_status.pic_urls.count)
         {
-            CGFloat retweetPhotoViewX = retweetContentLabelX;
-            CGFloat retweetPhotoViewY = CGRectGetMaxY(_retweetContentLabelF) +CJStatusCellBorder * 0.5;
-            CGFloat retweetPhotoViewW = 70;
-            CGFloat retweetPhotoViewH = 70;
-            _retweetPhotoViewF = CGRectMake(retweetPhotoViewX, retweetPhotoViewY, retweetPhotoViewW, retweetPhotoViewH);
+#warning 根据图片个数计算整个相册的尺寸
+            CGSize retweetPhotosViewSize = [CJPhotosView photosViewSizeWithPhotosCount:status.retweeted_status.pic_urls.count];
+            CGFloat retweetPhotosViewX = retweetContentLabelX;
+            CGFloat retweetPhotosViewY = CGRectGetMaxY(_retweetContentLabelF) + CJStatusCellBorder;
+            _retweetPhotosViewF = CGRectMake(retweetPhotosViewX, retweetPhotosViewY, retweetPhotosViewSize.width, retweetPhotosViewSize.height);
             
         }
         
         
         // 13.计算retweetView的frame
-        if (status.retweeted_status.thumbnail_pic)// 被转发微博 有 配图的情况
+        if (status.retweeted_status.pic_urls.count)// 被转发微博 有 配图的情况
         {
-            retweetViewH = CGRectGetMaxY(_retweetPhotoViewF) +CJStatusCellBorder;
+            retweetViewH = CGRectGetMaxY(_retweetPhotosViewF) +CJStatusCellBorder;
             _retweetViewF = CGRectMake(retweetViewX, retweetViewY, retweetViewW, retweetViewH);
         }
         else// 被转发微博 没 配图的情况
@@ -185,9 +185,9 @@
     }
     else// 没有 被转发微博
     {
-        if (status.thumbnail_pic)// 有 原创微博配图
+        if (status.pic_urls.count)// 有 原创微博配图
         {
-            topViewH = CGRectGetMaxY(_photoViewF) +CJStatusCellBorder;
+            topViewH = CGRectGetMaxY(_photosViewF) +CJStatusCellBorder;
             _topViewF = CGRectMake(topViewX, topViewY, topViewW, topViewH);
         }
         else// 没有 原创微博配图

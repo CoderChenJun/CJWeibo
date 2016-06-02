@@ -54,6 +54,9 @@
 #import "CJUser.h"
 #import "CJStatusFrame.h"
 #import "CJStatusCell.h"
+#import "CJPhoto.h"
+#import "CJPhotosView.h"
+#import "CJPhotoView.h"
 
 
 
@@ -61,8 +64,8 @@
 #import "MBProgressHUD+CJ.h"
 #import "UIImageView+WebCache.h"
 #import "MJExtension.h"
-
-
+#import "MJPhotoBrowser.h"
+#import "MJPhoto.h"
 
 
 // 1.判断是否为iOS7

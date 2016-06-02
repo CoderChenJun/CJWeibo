@@ -13,6 +13,23 @@
 
 
 
+
+/**
+ *  将接收到的数组中的字典转成模型对象
+ *
+ *  @[@{}, @{}, @{}, @{}] ---> @[模型, 模型, 模型, 模型]
+ */
+- (NSDictionary *)objectClassInArray
+{
+    return @{@"pic_urls" : [CJPhoto class]};
+}
+
+
+
+
+
+
+
 /**
  *  重写created_at的GET方法,设置成正确显示的格式
  */

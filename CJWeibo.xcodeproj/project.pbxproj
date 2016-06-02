@@ -72,6 +72,21 @@
 		DDA023551CFFDDDA007A06E7 /* CJStatusTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA023541CFFDDDA007A06E7 /* CJStatusTopView.m */; };
 		DDA023581D000C80007A06E7 /* CJPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA023571D000C80007A06E7 /* CJPhoto.m */; };
 		DDAC9B0B1CF819A000EDF983 /* CJStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B0A1CF819A000EDF983 /* CJStatusCell.m */; };
+		DDB971EA1D0050790061364F /* CJPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB971E91D0050790061364F /* CJPhotosView.m */; };
+		DDB971ED1D0050900061364F /* CJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB971EC1D0050900061364F /* CJPhotoView.m */; };
+		DDB971FE1D0051B80061364F /* MJPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB971F01D0051B80061364F /* MJPhoto.m */; };
+		DDB971FF1D0051B80061364F /* MJPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DDB971F11D0051B80061364F /* MJPhotoBrowser.bundle */; };
+		DDB972001D0051B80061364F /* MJPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB971F31D0051B80061364F /* MJPhotoBrowser.m */; };
+		DDB972011D0051B80061364F /* MJPhotoLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB971F51D0051B80061364F /* MJPhotoLoadingView.m */; };
+		DDB972021D0051B80061364F /* MJPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB971F71D0051B80061364F /* MJPhotoProgressView.m */; };
+		DDB972031D0051B80061364F /* MJPhotoToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB971F91D0051B80061364F /* MJPhotoToolbar.m */; };
+		DDB972041D0051B80061364F /* MJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB971FB1D0051B80061364F /* MJPhotoView.m */; };
+		DDB972051D0051B80061364F /* SDWebImageManager+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB971FD1D0051B80061364F /* SDWebImageManager+MJ.m */; };
+		DDB9720D1D0051C00061364F /* btn_close_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB972071D0051C00061364F /* btn_close_normal.png */; };
+		DDB9720E1D0051C00061364F /* btn_close_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB972081D0051C00061364F /* btn_close_normal@2x.png */; };
+		DDB9720F1D0051C00061364F /* btn_close_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB972091D0051C00061364F /* btn_close_selected.png */; };
+		DDB972101D0051C00061364F /* btn_close_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB9720A1D0051C00061364F /* btn_close_selected@2x.png */; };
+		DDB972111D0051C00061364F /* DXAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB9720C1D0051C00061364F /* DXAlertView.m */; };
 		DDC842E01CF80A9200996C65 /* MJArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC842CE1CF80A9200996C65 /* MJArgument.m */; };
 		DDC842E11CF80A9200996C65 /* MJIvar.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC842D11CF80A9200996C65 /* MJIvar.m */; };
 		DDC842E21CF80A9200996C65 /* MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC842D31CF80A9200996C65 /* MJMember.m */; };
@@ -234,6 +249,31 @@
 		DDA023571D000C80007A06E7 /* CJPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJPhoto.m; path = "CJWeibo/Classes/Home(首页)/Model/CJPhoto.m"; sourceTree = SOURCE_ROOT; };
 		DDAC9B091CF819A000EDF983 /* CJStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJStatusCell.h; path = "CJWeibo/Classes/Home(首页)/View/CJStatusCell.h"; sourceTree = SOURCE_ROOT; };
 		DDAC9B0A1CF819A000EDF983 /* CJStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJStatusCell.m; path = "CJWeibo/Classes/Home(首页)/View/CJStatusCell.m"; sourceTree = SOURCE_ROOT; };
+		DDB971E81D0050790061364F /* CJPhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJPhotosView.h; path = "CJWeibo/Classes/Home(首页)/View/CJPhotosView.h"; sourceTree = SOURCE_ROOT; };
+		DDB971E91D0050790061364F /* CJPhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJPhotosView.m; path = "CJWeibo/Classes/Home(首页)/View/CJPhotosView.m"; sourceTree = SOURCE_ROOT; };
+		DDB971EB1D0050900061364F /* CJPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJPhotoView.h; path = "CJWeibo/Classes/Home(首页)/View/CJPhotoView.h"; sourceTree = SOURCE_ROOT; };
+		DDB971EC1D0050900061364F /* CJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJPhotoView.m; path = "CJWeibo/Classes/Home(首页)/View/CJPhotoView.m"; sourceTree = SOURCE_ROOT; };
+		DDB971EF1D0051B80061364F /* MJPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhoto.h; sourceTree = "<group>"; };
+		DDB971F01D0051B80061364F /* MJPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhoto.m; sourceTree = "<group>"; };
+		DDB971F11D0051B80061364F /* MJPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJPhotoBrowser.bundle; sourceTree = "<group>"; };
+		DDB971F21D0051B80061364F /* MJPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoBrowser.h; sourceTree = "<group>"; };
+		DDB971F31D0051B80061364F /* MJPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoBrowser.m; sourceTree = "<group>"; };
+		DDB971F41D0051B80061364F /* MJPhotoLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoLoadingView.h; sourceTree = "<group>"; };
+		DDB971F51D0051B80061364F /* MJPhotoLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoLoadingView.m; sourceTree = "<group>"; };
+		DDB971F61D0051B80061364F /* MJPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoProgressView.h; sourceTree = "<group>"; };
+		DDB971F71D0051B80061364F /* MJPhotoProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoProgressView.m; sourceTree = "<group>"; };
+		DDB971F81D0051B80061364F /* MJPhotoToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoToolbar.h; sourceTree = "<group>"; };
+		DDB971F91D0051B80061364F /* MJPhotoToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoToolbar.m; sourceTree = "<group>"; };
+		DDB971FA1D0051B80061364F /* MJPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJPhotoView.h; sourceTree = "<group>"; };
+		DDB971FB1D0051B80061364F /* MJPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJPhotoView.m; sourceTree = "<group>"; };
+		DDB971FC1D0051B80061364F /* SDWebImageManager+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDWebImageManager+MJ.h"; sourceTree = "<group>"; };
+		DDB971FD1D0051B80061364F /* SDWebImageManager+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDWebImageManager+MJ.m"; sourceTree = "<group>"; };
+		DDB972071D0051C00061364F /* btn_close_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close_normal.png; sourceTree = "<group>"; };
+		DDB972081D0051C00061364F /* btn_close_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_close_normal@2x.png"; sourceTree = "<group>"; };
+		DDB972091D0051C00061364F /* btn_close_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_close_selected.png; sourceTree = "<group>"; };
+		DDB9720A1D0051C00061364F /* btn_close_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_close_selected@2x.png"; sourceTree = "<group>"; };
+		DDB9720B1D0051C00061364F /* DXAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DXAlertView.h; sourceTree = "<group>"; };
+		DDB9720C1D0051C00061364F /* DXAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DXAlertView.m; sourceTree = "<group>"; };
 		DDC842CD1CF80A9200996C65 /* MJArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJArgument.h; sourceTree = "<group>"; };
 		DDC842CE1CF80A9200996C65 /* MJArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJArgument.m; sourceTree = "<group>"; };
 		DDC842CF1CF80A9200996C65 /* MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJExtension.h; sourceTree = "<group>"; };
@@ -378,10 +418,10 @@
 			children = (
 				DD9818241CF7FFDC0063858B /* CJStatus.h */,
 				DD9818251CF7FFDC0063858B /* CJStatus.m */,
-				DD9818271CF802110063858B /* CJUser.h */,
-				DD9818281CF802110063858B /* CJUser.m */,
 				DD9CDB721CF8451600DFB839 /* CJStatusFrame.h */,
 				DD9CDB731CF8451600DFB839 /* CJStatusFrame.m */,
+				DD9818271CF802110063858B /* CJUser.h */,
+				DD9818281CF802110063858B /* CJUser.m */,
 				DDA023561D000C80007A06E7 /* CJPhoto.h */,
 				DDA023571D000C80007A06E7 /* CJPhoto.m */,
 			);
@@ -401,6 +441,10 @@
 				DDA023511CFFD7F2007A06E7 /* CJRetweetStatusView.m */,
 				DDA023531CFFDDDA007A06E7 /* CJStatusTopView.h */,
 				DDA023541CFFDDDA007A06E7 /* CJStatusTopView.m */,
+				DDB971E81D0050790061364F /* CJPhotosView.h */,
+				DDB971E91D0050790061364F /* CJPhotosView.m */,
+				DDB971EB1D0050900061364F /* CJPhotoView.h */,
+				DDB971EC1D0050900061364F /* CJPhotoView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -622,6 +666,8 @@
 		DD98177D1CF7CE4A0063858B /* Lib(第三方) */ = {
 			isa = PBXGroup;
 			children = (
+				DDB972061D0051C00061364F /* Vendor */,
+				DDB971EE1D0051B80061364F /* MJPhotoBrowser */,
 				DDC842CC1CF80A9200996C65 /* MJExtension */,
 				DD9817F21CF7EF730063858B /* SDWebImage */,
 				DD98177E1CF7CE4A0063858B /* AFNetworking */,
@@ -720,6 +766,41 @@
 				DD9818131CF7EF740063858B /* UIView+WebCacheOperation.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		DDB971EE1D0051B80061364F /* MJPhotoBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				DDB971EF1D0051B80061364F /* MJPhoto.h */,
+				DDB971F01D0051B80061364F /* MJPhoto.m */,
+				DDB971F11D0051B80061364F /* MJPhotoBrowser.bundle */,
+				DDB971F21D0051B80061364F /* MJPhotoBrowser.h */,
+				DDB971F31D0051B80061364F /* MJPhotoBrowser.m */,
+				DDB971F41D0051B80061364F /* MJPhotoLoadingView.h */,
+				DDB971F51D0051B80061364F /* MJPhotoLoadingView.m */,
+				DDB971F61D0051B80061364F /* MJPhotoProgressView.h */,
+				DDB971F71D0051B80061364F /* MJPhotoProgressView.m */,
+				DDB971F81D0051B80061364F /* MJPhotoToolbar.h */,
+				DDB971F91D0051B80061364F /* MJPhotoToolbar.m */,
+				DDB971FA1D0051B80061364F /* MJPhotoView.h */,
+				DDB971FB1D0051B80061364F /* MJPhotoView.m */,
+				DDB971FC1D0051B80061364F /* SDWebImageManager+MJ.h */,
+				DDB971FD1D0051B80061364F /* SDWebImageManager+MJ.m */,
+			);
+			path = MJPhotoBrowser;
+			sourceTree = "<group>";
+		};
+		DDB972061D0051C00061364F /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				DDB972071D0051C00061364F /* btn_close_normal.png */,
+				DDB972081D0051C00061364F /* btn_close_normal@2x.png */,
+				DDB972091D0051C00061364F /* btn_close_selected.png */,
+				DDB9720A1D0051C00061364F /* btn_close_selected@2x.png */,
+				DDB9720B1D0051C00061364F /* DXAlertView.h */,
+				DDB9720C1D0051C00061364F /* DXAlertView.m */,
+			);
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 		DDC842CC1CF80A9200996C65 /* MJExtension */ = {
@@ -900,14 +981,19 @@
 				DD9D177F1CFE8D0100C9B89F /* Filewode5 in Resources */,
 				DD9817C21CF7CE4A0063858B /* Info.plist in Resources */,
 				DDDEA7F21CF87E830056D76F /* Filewode4 in Resources */,
+				DDB9720E1D0051C00061364F /* btn_close_normal@2x.png in Resources */,
 				DDDEA7F01CF87E630056D76F /* Filewode3 in Resources */,
 				DD98179F1CF7CE4A0063858B /* Assets.xcassets in Resources */,
 				DDDEA7E81CF87D030056D76F /* File in Resources */,
 				DD9817A01CF7CE4A0063858B /* Main.storyboard in Resources */,
 				DD9817C31CF7CE4A0063858B /* LaunchScreen.storyboard in Resources */,
+				DDB9720F1D0051C00061364F /* btn_close_selected.png in Resources */,
+				DDB972101D0051C00061364F /* btn_close_selected@2x.png in Resources */,
 				DD9817BF1CF7CE4A0063858B /* MBProgressHUD.bundle in Resources */,
 				DDDEA7EA1CF87D950056D76F /* File2 in Resources */,
 				DDDEA7F51CF87EE10056D76F /* File_HomeController in Resources */,
+				DDB9720D1D0051C00061364F /* btn_close_normal.png in Resources */,
+				DDB971FF1D0051B80061364F /* MJPhotoBrowser.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -933,16 +1019,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDAC9B0B1CF819A000EDF983 /* CJStatusCell.m in Sources */,
+				DDB971FE1D0051B80061364F /* MJPhoto.m in Sources */,
 				DD9818261CF7FFDC0063858B /* CJStatus.m in Sources */,
 				DD9817BB1CF7CE4A0063858B /* AFURLRequestSerialization.m in Sources */,
 				DD9817BA1CF7CE4A0063858B /* AFURLConnectionOperation.m in Sources */,
+				DDB972111D0051C00061364F /* DXAlertView.m in Sources */,
 				DD9817B31CF7CE4A0063858B /* UIImage+CJ.m in Sources */,
 				DDC842E41CF80A9200996C65 /* MJType.m in Sources */,
 				DD9818291CF802110063858B /* CJUser.m in Sources */,
 				DD98181B1CF7EF740063858B /* SDWebImageManager.m in Sources */,
 				DDC842E51CF80A9200996C65 /* MJTypeEncoding.m in Sources */,
+				DDB972041D0051B80061364F /* MJPhotoView.m in Sources */,
 				DD9817B01CF7CE4A0063858B /* CJAccount.m in Sources */,
 				DD9817A21CF7CE4A0063858B /* CJSearchBar.m in Sources */,
+				DDB971ED1D0050900061364F /* CJPhotoView.m in Sources */,
 				DD9817BD1CF7CE4A0063858B /* AFURLSessionManager.m in Sources */,
 				DDC842E01CF80A9200996C65 /* MJArgument.m in Sources */,
 				DD98181F1CF7EF740063858B /* UIImage+MultiFormat.m in Sources */,
@@ -950,10 +1040,13 @@
 				DD9818191CF7EF740063858B /* SDWebImageDownloader.m in Sources */,
 				DD9D17851CFEF95500C9B89F /* CJStatusToolbar.m in Sources */,
 				DD9817A41CF7CE4A0063858B /* CJTitleButton.m in Sources */,
+				DDB971EA1D0050790061364F /* CJPhotosView.m in Sources */,
+				DDB972051D0051B80061364F /* SDWebImageManager+MJ.m in Sources */,
 				DD9818201CF7EF740063858B /* UIImage+WebP.m in Sources */,
 				DD9817B41CF7CE4A0063858B /* CJWeiboTool.m in Sources */,
 				DD9817B91CF7CE4A0063858B /* AFSecurityPolicy.m in Sources */,
 				DD9817C11CF7CE4A0063858B /* ViewController.m in Sources */,
+				DDB972011D0051B80061364F /* MJPhotoLoadingView.m in Sources */,
 				DDC842E31CF80A9200996C65 /* MJMethod.m in Sources */,
 				DD9D17821CFED6EF00C9B89F /* NSDate+CJ.m in Sources */,
 				DD9817B51CF7CE4A0063858B /* AFHTTPRequestOperation.m in Sources */,
@@ -971,6 +1064,8 @@
 				DD98181E1CF7EF740063858B /* UIImage+GIF.m in Sources */,
 				DDC842E11CF80A9200996C65 /* MJIvar.m in Sources */,
 				DD9818221CF7EF740063858B /* UIImageView+WebCache.m in Sources */,
+				DDB972031D0051B80061364F /* MJPhotoToolbar.m in Sources */,
+				DDB972021D0051B80061364F /* MJPhotoProgressView.m in Sources */,
 				DD9817B71CF7CE4A0063858B /* AFHTTPSessionManager.m in Sources */,
 				DDA023581D000C80007A06E7 /* CJPhoto.m in Sources */,
 				DD9818161CF7EF740063858B /* SDImageCache.m in Sources */,
@@ -997,6 +1092,7 @@
 				DD9817BC1CF7CE4A0063858B /* AFURLResponseSerialization.m in Sources */,
 				DD9818231CF7EF740063858B /* UIView+WebCacheOperation.m in Sources */,
 				DD9818141CF7EF740063858B /* MKAnnotationView+WebCache.m in Sources */,
+				DDB972001D0051B80061364F /* MJPhotoBrowser.m in Sources */,
 				DD9817C41CF7CE4A0063858B /* main.m in Sources */,
 				DD9817AE1CF7CE4A0063858B /* CJOAuthViewController.m in Sources */,
 			);

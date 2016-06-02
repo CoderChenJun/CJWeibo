@@ -62,57 +62,20 @@
     // 3.发送请求
     [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params
      success:^(AFHTTPRequestOperation *operation, id responseObject) {
-         
-         //          // 取出所有的微博数据(每一条微博都是一个字典)
-         //          NSArray *dictArray = responseObject[@"statuses"];
-         //          // 将字典数据转为模型数据
-         //          NSMutableArray *statusArray = [NSMutableArray array];
-         //          for (NSDictionary *dict in dictArray)
-         //          {
-         //              // 创建模型
-         //              // 使用了MJExtension框架
-         //              CJStatus *status = [CJStatus objectWithKeyValues:dict];
-         //              // 添加模型
-         //              [statusArray addObject:status];
-         //          }
-         //          self.statuses = statusArray;
-         
-         
-         
-         
-         
+ 
          // 将字典数组转为模型数组(里面放的就是CJStatus模型)
          NSArray *statusArray = [CJStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
-         
-         
-         
-         
-         
-         
-//         for (NSDictionary *dict in responseObject[@"statuses"])
-//         {
-//             CJLog(@"%@",dict[@"pic_urls"]);
-//         }
-//         //  dict[@"pic_urls"]   --->   CJStatus.pic_urls
-//         //  原本装着的字典        --->   转变成模型对象
-         
-         
-         
-         
-         
-         
-         
+
          // 创建frame模型对象(将微博数据模型转成 frame 模型)
          NSMutableArray *statusFrameArray = [NSMutableArray array];
          for (CJStatus *status in statusArray)
          {
+             
              CJStatusFrame *statusFrame = [[CJStatusFrame alloc] init];
              // 传递微博模型数据
              statusFrame.status = status;
              [statusFrameArray addObject:statusFrame];
          }
-         
-         
          
          // 赋值
          self.statusFrames = statusFrameArray;
@@ -181,6 +144,10 @@
     // 设置tableView额外滚动区域
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, CJStatusTableBorder, 0);
     
+    // 去除tableView的分割线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
 }
 
 - (void)findFriend
@@ -230,28 +197,13 @@
     cell.statusFrame = self.statusFrames[indexPath.row];
     
     
-    //    // 取出微博模型
-    //    CJStatus *status = self.statusFrames[indexPath.row];
-    //    // 微博的文字(内容)
-    //    cell.textLabel.text = status.text;
-    //    // 取出用户模型
-    //    CJUser *user = status.user;
-    //    // 微博作者的昵称
-    //    cell.detailTextLabel.text = user.name;
-    //    // 微博作者的头像
-    //    // SDWebimage 框架(异步下载图片)
-    //    NSString *iconUrl = user.profile_image_url;
-    ////    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:iconUrl]];
-    ////    cell.imageView.image = [UIImage imageWithData:imageData];
-    //    [cell.imageView setImageWithURL:[NSURL URLWithString:iconUrl] placeholderImage:[UIImage imageWithNamed:@"avatar_default_small"]];
-    
-    
-    
-    
     // 3.返回cell
     return cell;
 }
 
+
+
+#pragma mark - 代理方法
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CJStatusFrame *statusFrame = self.statusFrames[indexPath.row];

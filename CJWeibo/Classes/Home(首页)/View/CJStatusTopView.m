@@ -18,7 +18,7 @@
 /** 会员图标 */
 @property (nonatomic, strong) UIImageView *vipView;
 /** 配图 */
-@property (nonatomic, strong) UIImageView *photoView;
+@property (nonatomic, strong) CJPhotosView *photosView;
 
 /** 昵称 */
 @property (nonatomic, strong) UILabel *nameLabel;
@@ -107,10 +107,27 @@
         self.vipView = vipView;
         
         
+        
+        
+        
+        
+        
+        
+        
         /** 4.配图 */
-        UIImageView *photoView = [[UIImageView alloc] init];
-        [self addSubview:photoView];
-        self.photoView = photoView;
+        CJPhotosView *photosView = [[CJPhotosView alloc] init];
+        [self addSubview:photosView];
+        self.photosView = photosView;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -247,17 +264,18 @@
     self.contentLabel.frame = self.statusFrame.contentLabelF;
     
     // 8.配图
-    if (status.thumbnail_pic)
+    if (status.pic_urls.count)
     {
-        self.photoView.hidden = NO;
-        self.photoView.frame = self.statusFrame.photoViewF;
-        [self.photoView setImageWithURL:[NSURL URLWithString:status.thumbnail_pic] placeholderImage:[UIImage imageWithNamed:@"timeline_image_placeholder"]];
+        self.photosView.hidden = NO;
+        self.photosView.frame = self.statusFrame.photosViewF;
+        self.photosView.photos = status.pic_urls;
     }
     else
     {
-        self.photoView.hidden = YES;
+        self.photosView.hidden = YES;
     }
 }
+
 
 /**
  *  设置被转发微博数据
