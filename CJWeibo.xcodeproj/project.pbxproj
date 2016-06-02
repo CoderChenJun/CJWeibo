@@ -70,6 +70,7 @@
 		DD9D17851CFEF95500C9B89F /* CJStatusToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9D17841CFEF95500C9B89F /* CJStatusToolbar.m */; };
 		DDA023521CFFD7F2007A06E7 /* CJRetweetStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA023511CFFD7F2007A06E7 /* CJRetweetStatusView.m */; };
 		DDA023551CFFDDDA007A06E7 /* CJStatusTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA023541CFFDDDA007A06E7 /* CJStatusTopView.m */; };
+		DDA023581D000C80007A06E7 /* CJPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA023571D000C80007A06E7 /* CJPhoto.m */; };
 		DDAC9B0B1CF819A000EDF983 /* CJStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAC9B0A1CF819A000EDF983 /* CJStatusCell.m */; };
 		DDC842E01CF80A9200996C65 /* MJArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC842CE1CF80A9200996C65 /* MJArgument.m */; };
 		DDC842E11CF80A9200996C65 /* MJIvar.m in Sources */ = {isa = PBXBuildFile; fileRef = DDC842D11CF80A9200996C65 /* MJIvar.m */; };
@@ -229,6 +230,8 @@
 		DDA023511CFFD7F2007A06E7 /* CJRetweetStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJRetweetStatusView.m; path = "CJWeibo/Classes/Home(首页)/View/CJRetweetStatusView.m"; sourceTree = SOURCE_ROOT; };
 		DDA023531CFFDDDA007A06E7 /* CJStatusTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJStatusTopView.h; path = "CJWeibo/Classes/Home(首页)/View/CJStatusTopView.h"; sourceTree = SOURCE_ROOT; };
 		DDA023541CFFDDDA007A06E7 /* CJStatusTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJStatusTopView.m; path = "CJWeibo/Classes/Home(首页)/View/CJStatusTopView.m"; sourceTree = SOURCE_ROOT; };
+		DDA023561D000C80007A06E7 /* CJPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJPhoto.h; path = "CJWeibo/Classes/Home(首页)/Model/CJPhoto.h"; sourceTree = SOURCE_ROOT; };
+		DDA023571D000C80007A06E7 /* CJPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJPhoto.m; path = "CJWeibo/Classes/Home(首页)/Model/CJPhoto.m"; sourceTree = SOURCE_ROOT; };
 		DDAC9B091CF819A000EDF983 /* CJStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CJStatusCell.h; path = "CJWeibo/Classes/Home(首页)/View/CJStatusCell.h"; sourceTree = SOURCE_ROOT; };
 		DDAC9B0A1CF819A000EDF983 /* CJStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CJStatusCell.m; path = "CJWeibo/Classes/Home(首页)/View/CJStatusCell.m"; sourceTree = SOURCE_ROOT; };
 		DDC842CD1CF80A9200996C65 /* MJArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJArgument.h; sourceTree = "<group>"; };
@@ -379,6 +382,8 @@
 				DD9818281CF802110063858B /* CJUser.m */,
 				DD9CDB721CF8451600DFB839 /* CJStatusFrame.h */,
 				DD9CDB731CF8451600DFB839 /* CJStatusFrame.m */,
+				DDA023561D000C80007A06E7 /* CJPhoto.h */,
+				DDA023571D000C80007A06E7 /* CJPhoto.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -967,6 +972,7 @@
 				DDC842E11CF80A9200996C65 /* MJIvar.m in Sources */,
 				DD9818221CF7EF740063858B /* UIImageView+WebCache.m in Sources */,
 				DD9817B71CF7CE4A0063858B /* AFHTTPSessionManager.m in Sources */,
+				DDA023581D000C80007A06E7 /* CJPhoto.m in Sources */,
 				DD9818161CF7EF740063858B /* SDImageCache.m in Sources */,
 				DD9817A71CF7CE4A0063858B /* CJBadgeButton.m in Sources */,
 				DDA023521CFFD7F2007A06E7 /* CJRetweetStatusView.m in Sources */,

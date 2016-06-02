@@ -59,6 +59,7 @@
 
 
 
+
 + (instancetype)cellWithTableView:(UITableView *)tableView
 {
     static NSString *ID = @"cell";
@@ -90,14 +91,6 @@
         
         // 2.添加微博的工具条
         [self setupStatusToolBar];
-        
-//        // 1.添加原创微博内部的子控件
-//        [self setupOriginalSubviews];
-//        // 2.添加被转发微博内部的子控件
-//        [self setupRetweetSubviews];
-//        // 3.添加微博的工具条
-//        [self setupStatusToolBar];
-        
     }
     return self;
 }
@@ -116,21 +109,6 @@
     
 }
 
-
-///**
-// *  添加被转发微博内部的子控件
-// */
-//- (void)setupRetweetSubviews
-//{
-//    
-//    /** 1.被转发微博的View(父控件) */
-//    CJRetweetStatusView *retweetView = [[CJRetweetStatusView alloc] init];
-//    [self.topView addSubview:retweetView];
-//    self.retweetView = retweetView;
-//    
-//}
-
-
 /**
  *  添加微博的工具条
  */
@@ -145,11 +123,6 @@
 
     
 }
-
-
-
-
-
 
 
 
@@ -180,11 +153,6 @@
 
 
 
-
-
-
-
-
 /**
  *  在这个方法中设置子控件的frame数据和显示数据
  */
@@ -192,20 +160,15 @@
 {
     _statusFrame = statusFrame;
     
-    // 1. 设置微博顶部View数据
+    // 1. 设置微博顶部View的数据
     [self setupTopViewData];
     
-//    // 2.设置被转发微博数据
-//    [self  setupRetweetData];
-    
-    // 3.设置微博工具条数据
+    // 2.设置微博工具条的数据
     [self  setupStatusToolBarData];
 }
 
-
-
 /**
- *  设置微博顶部View数据
+ *  设置微博顶部View的数据
  */
 - (void)setupTopViewData
 {
@@ -216,39 +179,8 @@
     self.topView.statusFrame = self.statusFrame;
 }
 
-
-
-///**
-// *  设置被转发微博数据
-// */
-//- (void)setupRetweetData
-//{
-//    
-//    CJStatus *retweetStatus = self.statusFrame.status.retweeted_status;
-//    
-//    // 1.父控件retweetView
-//    // 如果有转发微博,赋值数据并显示
-//    if (retweetStatus)
-//    {
-//        
-//        self.retweetView.hidden = NO;
-//        
-//        // 2.设置整体的frame
-//        self.retweetView.frame = self.statusFrame.retweetViewF;
-//        
-//        // 3.传递模型数据
-//        self.retweetView.statusFrame = self.statusFrame;
-//    }
-//    else
-//    {
-//        self.retweetView.hidden = YES;
-//    }
-//    
-//}
-
-
 /**
- *  设置微博工具条数据
+ *  设置微博工具条的数据
  */
 - (void)setupStatusToolBarData
 {

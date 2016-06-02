@@ -86,6 +86,22 @@
          
          
          
+         
+         
+         
+//         for (NSDictionary *dict in responseObject[@"statuses"])
+//         {
+//             CJLog(@"%@",dict[@"pic_urls"]);
+//         }
+//         //  dict[@"pic_urls"]   --->   CJStatus.pic_urls
+//         //  原本装着的字典        --->   转变成模型对象
+         
+         
+         
+         
+         
+         
+         
          // 创建frame模型对象(将微博数据模型转成 frame 模型)
          NSMutableArray *statusFrameArray = [NSMutableArray array];
          for (CJStatus *status in statusArray)
