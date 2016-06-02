@@ -10,18 +10,10 @@
 
 
 #import <Foundation/Foundation.h>
-
-
 @class CJUser;
 
 
 @interface CJStatus : NSObject
-
-
-
-
-
-
 /**
  *  微博内容(文字)
  */
@@ -61,19 +53,10 @@
  *  微博的单张配图
  */
 @property (nonatomic, copy) NSString *thumbnail_pic;
-
-
-
 /**
  *  被转发的微博
  */
-@property (nonatomic, strong) CJStatus *retweetStatus;
-
-
-
-
-
-
+@property (nonatomic, strong) CJStatus *retweeted_status;
 /**
  *  用户的信息
  */

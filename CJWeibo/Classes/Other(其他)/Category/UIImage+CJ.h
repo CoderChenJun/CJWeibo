@@ -20,8 +20,15 @@
 
 
 /**
- *  返回一张可以自由拉伸的图片
+ *  返回一张通过最中心点进行拉伸的图片
  */
 + (UIImage *)resizedImageWithName:(NSString *)name;
+
+
+/**
+ *  传入百分比,返回一张自由拉伸的图片
+ */
++ (UIImage *)resizedImageWithName:(NSString *)name left:(CGFloat)left top:(CGFloat)top;
+
 
 @end
