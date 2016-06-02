@@ -86,6 +86,11 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        // 0.能够与用户交互
+        self.userInteractionEnabled = YES;
+        
+        
+        
         // 1.设置被转发微博的背景图片
         self.image = [UIImage resizedImageWithName:@"timeline_card_top_background"];// 设置圆角背景图片
         self.highlightedImage = [UIImage resizedImageWithName:@"timeline_card_top_background_highlighted"];// 设置高亮状态下圆角背景图片

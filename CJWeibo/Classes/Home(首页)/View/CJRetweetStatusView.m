@@ -39,6 +39,14 @@
     self = [super initWithFrame:frame];
     if (self)
     {
+        
+        // 0.能够与用户交互
+        self.userInteractionEnabled = YES;
+        
+
+        
+        
+        
         // 1.设置被转发微博的背景图片
         self.image = [UIImage resizedImageWithName:@"timeline_retweet_background" left:0.8 top:0.5 ];// 设置被转发微博区域的背景图片
         

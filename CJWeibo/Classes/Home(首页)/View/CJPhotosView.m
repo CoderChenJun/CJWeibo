@@ -8,6 +8,8 @@
 
 #import "CJPhotosView.h"
 
+#import "DXAlertView.h"
+
 #define CJPhotoW 70
 #define CJPhotoH 70
 #define CJPhotoMargin 10
@@ -32,9 +34,11 @@
 
 - (void)photoTap:(UITapGestureRecognizer *)recognizer
 {
-    //    DXAlertView *alertView = [[DXAlertView alloc] initWithTitle:@"哈哈" contentText:@"废话速度快回家繁华的时刻分开后" leftButtonTitle:@"确定" rightButtonTitle:@"取消"];
-    //    [alertView show];
-    //
+//    DXAlertView *alertView = [[DXAlertView alloc] initWithTitle:@"哈哈" contentText:@"废话速度快回家繁华的时刻分开后" leftButtonTitle:@"确定" rightButtonTitle:@"取消"];
+//    [alertView show];
+    
+    
+    
     int count = self.photos.count;
     
     // 1.封装图片数据
@@ -46,6 +50,8 @@
         mjphoto.srcImageView = self.subviews[i]; // 来源于哪个UIImageView
         
         CJPhoto *CJphoto = self.photos[i];
+        
+        // 将缩略图换成中等尺寸图片
         NSString *photoUrl = [CJphoto.thumbnail_pic stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
         mjphoto.url = [NSURL URLWithString:photoUrl]; // 图片路径
         
