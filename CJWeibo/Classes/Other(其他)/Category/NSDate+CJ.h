@@ -28,6 +28,12 @@
 - (BOOL)isThisYear;
 
 
+/**
+ *  返回一个只有 年月日 的时间
+ */
+- (NSDate *)dateWithYMD;
+
+
 
 /**
  *  获得与当前时间的差距

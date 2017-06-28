@@ -46,7 +46,9 @@
     // 1.获得微博的发送时间
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
     fmt.dateFormat = @"EEE MMM dd HH:mm:ss Z yyyy";
-    [fmt setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];// 须强行转换日期_美国
+    
+#warning 真机调试下,必须加上这一段
+    [fmt setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];// 须强行转换日期格式_告诉它返回的是美国格式
     NSDate *createdDate = [fmt dateFromString:_created_at];
 //    CJLog(@"%@", createdDate);
 

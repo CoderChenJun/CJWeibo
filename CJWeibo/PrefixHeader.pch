@@ -31,6 +31,9 @@
     #import <Foundation/Foundation.h>
 
 
+// 宏头文件
+#import "CJCommon.h"
+
 
 
 
@@ -41,7 +44,6 @@
 #import "UIImage+CJ.h"
 #import "UIBarButtonItem+CJ.h"
 #import "CJSearchBar.h"
-#import "CJTitleButton.h"
 #import "CJWeiboTool.h"
 
 
@@ -50,6 +52,7 @@
 
 
 
+#import "CJTitleButton.h"
 #import "CJStatus.h"
 #import "CJUser.h"
 #import "CJStatusFrame.h"
@@ -59,41 +62,14 @@
 #import "CJPhotoView.h"
 
 
-
+// 第三方框架
 #import "AFNetworking.h"
 #import "MBProgressHUD+CJ.h"
 #import "UIImageView+WebCache.h"
 #import "MJExtension.h"
 #import "MJPhotoBrowser.h"
 #import "MJPhoto.h"
-
-
-// 1.判断是否为iOS7
-#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
-
-// 2.RGB颜色
-#define CJColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
-
-
-// 4.自定义Log
-#ifdef DEBUG
-#define CJLog(...) NSLog(__VA_ARGS__)
-#else
-#define CJLog(...)
-#endif
-
-
-
-
-
-
-
-
-
-
-
-
-
+#import "MJRefresh.h"
 
 
 

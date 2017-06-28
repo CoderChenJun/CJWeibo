@@ -8,30 +8,6 @@
 //  一个cell对应一个CJStatusFrame对象
 
 
-/** 时间的字体 */
-#define CJStatusTimeFont [UIFont systemFontOfSize:12]
-/** 来源的字体 */
-#define CJStatusSourceFont CJStatusTimeFont
-
-
-/** 昵称的字体 */
-#define CJStatusNameFont [UIFont systemFontOfSize:15]
-/** 正文的字体 */
-#define CJStatusContentFont CJStatusNameFont
-
-
-/** 被转发微博的昵称的字体 */
-#define CJRetweetNameFont [UIFont systemFontOfSize:13]
-/** 被转发微博的正文的字体 */
-#define CJRetweetContentFont CJRetweetNameFont
-
-
-/** 整个tableView 的宽度 */
-#define CJStatusTableBorder 5
-/** cell的内边框宽度 */
-#define CJStatusCellBorder 10
-
-
 
 
 #import <Foundation/Foundation.h>

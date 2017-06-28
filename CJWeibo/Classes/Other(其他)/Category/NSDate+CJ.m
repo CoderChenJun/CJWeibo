@@ -39,18 +39,25 @@
  */
 - (BOOL)isYesterday
 {
-//    NSCalendar *calendar = [NSCalendar currentCalendar];
-//    int unit = NSCalendarUnitDay | NSCalendarUnitMonth |  NSCalendarUnitYear;
-//    
-//    // 1.获得当前时间的年月日
-//    NSDateComponents *nowCmps = [calendar components:unit fromDate:[NSDate date]];
-//    
-//    // 2.获得self的年月日
-//    NSDateComponents *selfCmps = [calendar components:unit fromDate:self];
-//    
-//    return (selfCmps.year == nowCmps.year) && (selfCmps.month == nowCmps.month) && (selfCmps.day == nowCmps.day);
+    // 2016-06-01 08:49:23 ---> 2016-06-01
+    // 2016-05-31 22:27:46 ---> 2016-05-31
     
-    return NO;
+    
+    
+    // 当前时间 2016-06-01
+    NSDate *nowDate = [[NSDate date] dateWithYMD];
+
+    // 发送时间 2016-05-31
+    NSDate *selfDate = [self dateWithYMD];
+    
+    
+    // 获得nowDate与selfDate的差距
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    int unit = NSCalendarUnitDay;
+    NSDateComponents *cmps = [calendar components:unit fromDate:selfDate toDate:nowDate options:0];
+    
+    return cmps.day == 1;
+    
 }
 
 
@@ -77,6 +84,18 @@
 
 
 
+/**
+ *  返回一个只有 年月日 的时间
+ */
+- (NSDate *)dateWithYMD
+{
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateFormat = @"yyyy-MM-dd";
+    NSString *selfStr = [fmt stringFromDate:self];
+    return [fmt dateFromString:selfStr];
+}
+
+
 
 
 
@@ -97,9 +116,6 @@
     // self : 2016-06-01 17:04:04
     // now  : 2016-06-01 19:27:38
     // return 2h 23m 34s
-    
-    
-    
 }
 
 

@@ -42,6 +42,8 @@
         
         self.expiresTime = [decoder decodeObjectForKey:@"expiresTime"];
         
+        self.name = [decoder decodeObjectForKey:@"name"];
+        
     }
     return self;
 }
@@ -52,6 +54,9 @@
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     [encoder encodeObject:self.access_token forKey:@"access_token"];
+    
+    [encoder encodeObject:self.name forKey:@"name"];
+    
     [encoder encodeInt64:self.expires_in forKey:@"expires_in"];
     [encoder encodeInt64:self.remind_in forKey:@"remind_in"];
     [encoder encodeInt64:self.uid forKey:@"uid"];

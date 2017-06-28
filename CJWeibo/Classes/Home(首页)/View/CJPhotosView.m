@@ -10,9 +10,6 @@
 
 #import "DXAlertView.h"
 
-#define CJPhotoW 70
-#define CJPhotoH 70
-#define CJPhotoMargin 10
 
 @implementation CJPhotosView
 

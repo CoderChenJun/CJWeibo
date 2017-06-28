@@ -5,16 +5,20 @@
 //  Created by app on 16/5/23.
 //  Copyright © 2016年 ChenJun. All rights reserved.
 //
+//  上拉或者下拉最多加载10条
 
 #import "CJHomeViewController.h"
 
 
-@interface CJHomeViewController ()
 
+
+
+@interface CJHomeViewController ()<MJRefreshBaseViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *statusFrames;
-
-
+@property (nonatomic, strong) CJTitleButton *titleButton;
+@property (nonatomic, weak) MJRefreshFooterView *footer;
+@property (nonatomic, weak) MJRefreshHeaderView *header;
 
 @end
 
@@ -29,7 +33,8 @@
 
 - (NSMutableArray *)statusFrames
 {
-    if (_statusFrames == nil) {
+    if (_statusFrames == nil)
+    {
         _statusFrames = [NSMutableArray array];
     }
     return _statusFrames;
@@ -49,8 +54,8 @@
     [self setupNavBar];
     
     
-    // 2.加载微博数据
-//    [self setupStatusData];
+    // 2.获取用户信息
+    [self setupUserData];
     
     
 }
@@ -61,33 +66,103 @@
  */
 - (void)setupRefreshView
 {
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    // 监听刷新控件的状态改变
-    [refreshControl addTarget:self action:@selector(refreshControlStateChange:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:refreshControl];
     
-    // 自动进入刷新状态(不会触发监听方法)
-    [refreshControl beginRefreshing];
+    // 1.下拉刷新
+    MJRefreshHeaderView *header = [MJRefreshHeaderView header];
+    header.scrollView = self.tableView;
+    header.delegate = self;
+    // 自动进入刷新状态
+    [header beginRefreshing];
+    self.header = header;
     
-    // 直接加载数据
-    [self refreshControlStateChange:refreshControl];
-
+    // 2.上拉刷新(上拉加载更多数据)
+    MJRefreshFooterView *footer = [MJRefreshFooterView footer];
+    footer.scrollView = self.tableView;
+    footer.delegate = self;
+    self.footer = footer;
 }
 
+- (void)dealloc
+{
+    // 释放内存
+    [self.header free];
+    [self.footer free];
+}
 
 /**
- *  监听刷新控件的状态改变(手动进入刷新状态才会调用这个方法)
+ *  刷新控件进入开始刷新状态的时候调用
  */
-- (void)refreshControlStateChange:(UIRefreshControl *)refreshControl
+- (void)refreshViewBeginRefreshing:(MJRefreshBaseView *)refreshView
 {
-    // 刷新数据(向新浪获取更新的微博数据)
+    if ([refreshView isKindOfClass:[MJRefreshFooterView class]])
+    { // 上拉刷新
+        [self loadMoreData];
+    }
+    else
+    { // 下拉刷新
+        [self loadNewData];
+    }
+}
+
+/**
+ *  发送请求加载更多的微博数据
+ */
+- (void)loadMoreData
+{
     // 1.创建请求管理对象
     AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
     
     // 2.封装请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [CJAccountTool account].access_token;
-    params[@"count"] = @20;
+    params[@"count"] = @5;
+    if (self.statusFrames.count) {
+        CJStatusFrame *statusFrame = [self.statusFrames lastObject];
+        // 加载ID <= max_id的微博
+        long long maxId = [statusFrame.status.idstr longLongValue] - 1;
+        params[@"max_id"] = @(maxId);
+    }
+    
+    // 3.发送请求
+    [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params
+     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         // 将字典数组转为模型数组(里面放的就是CJStatus模型)
+         NSArray *statusArray = [CJStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+         // 创建frame模型对象
+         NSMutableArray *statusFrameArray = [NSMutableArray array];
+         for (CJStatus *status in statusArray) {
+             CJStatusFrame *statusFrame = [[CJStatusFrame alloc] init];
+             // 传递微博模型数据
+             statusFrame.status = status;
+             [statusFrameArray addObject:statusFrame];
+         }
+         
+         // 添加新数据到旧数据的后面
+         [self.statusFrames addObjectsFromArray:statusFrameArray];
+         
+         // 刷新表格
+         [self.tableView reloadData];
+         
+         // 让刷新控件停止显示刷新状态
+         [self.footer endRefreshing];
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         // 让刷新控件停止显示刷新状态
+         [self.footer endRefreshing];
+     }];
+}
+
+/**
+ *  // 刷新数据(向新浪获取更新的微博数据)
+ */
+- (void)loadNewData
+{
+    // 1.创建请求管理对象
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+    // 2.封装请求参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = [CJAccountTool account].access_token;
+    params[@"count"] = @5;
     if (self.statusFrames.count) {
         CJStatusFrame *statusFrame = self.statusFrames[0];
         // 加载ID比since_id大的微博
@@ -97,7 +172,7 @@
     // 3.发送请求
     [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params
      success:^(AFHTTPRequestOperation *operation, id responseObject) {
-         // 将字典数组转为模型数组(里面放的就是IWStatus模型)
+         // 将字典数组转为模型数组(里面放的就是CJStatus模型)
          NSArray *statusArray = [CJStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
          // 创建frame模型对象
          NSMutableArray *statusFrameArray = [NSMutableArray array];
@@ -122,20 +197,15 @@
          [self.tableView reloadData];
          
          // 让刷新控件停止显示刷新状态
-         [refreshControl endRefreshing];
-         
-         
+         [self.header endRefreshing];
          
          // 显示最新微博的数量(给用户一些友善的提示)
          [self showNewStatusCount:statusFrameArray.count];
-         
-         
      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
          // 让刷新控件停止显示刷新状态
-         [refreshControl endRefreshing];
+         [self.header endRefreshing];
      }];
 }
-
 
 /**
  *  显示最新微博的数量(给用户一些友善的提示)
@@ -188,72 +258,6 @@
 
 
 
-
-///**
-// *  加载微博数据
-// */
-//- (void)setupStatusData
-//{
-//    // 1.创建请求管理对象
-//    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
-//    
-//    // 说明从服务器返回的 JSON 数据
-//    //    mgr.responseSerializer = [AFJSONResponseSerializer serializer];
-//    
-//    // 2.封装请求参数
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    params[@"access_token"] = [CJAccountTool account].access_token;
-//    
-//    // 3.发送请求
-//    [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params
-//     success:^(AFHTTPRequestOperation *operation, id responseObject) {
-// 
-//         // 将字典数组转为模型数组(里面放的就是CJStatus模型)
-//         NSArray *statusArray = [CJStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
-//
-//         // 创建frame模型对象(将微博数据模型转成 frame 模型)
-//         NSMutableArray *statusFrameArray = [NSMutableArray array];
-//         for (CJStatus *status in statusArray)
-//         {
-//             
-//             CJStatusFrame *statusFrame = [[CJStatusFrame alloc] init];
-//             // 传递微博模型数据
-//             statusFrame.status = status;
-//             [statusFrameArray addObject:statusFrame];
-//         }
-//         
-//         // 赋值
-//         self.statusFrames = statusFrameArray;
-//         
-//         
-//         
-//         // 异步网络请求成功可能会延迟，所以要重新刷新表格
-//         [self.tableView reloadData];
-//         
-//         
-//         
-//     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//         
-//         CJLog(@"微博数据请求失败！！%@",error);
-//         
-//     }];
-//    
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /**
  *  设置导航栏的内容
  */
@@ -273,13 +277,27 @@
     [titleButton setImage:[UIImage imageWithNamed:@"navigationbar_arrow_up"] forState:UIControlStateSelected];
     // 根据按钮状态的改变  切换图片
     titleButton.selected = NO;
-    // 文字
-    [titleButton setTitle:@"哈哈哈哈" forState: UIControlStateNormal];
     // 位置和尺寸
-    titleButton.frame = CGRectMake(0, 0, 100, 40);
+    titleButton.frame = CGRectMake(0, 0, 0, 40);
+    
+    
+    // 文字
+    if ([CJAccountTool account].name)
+    {
+        [titleButton setTitle:[CJAccountTool account].name forState:UIControlStateNormal];
+    }
+    else
+    {
+        [titleButton setTitle:@"首页" forState:UIControlStateNormal];
+    }
+    
+    // 监听按钮的点击
     [titleButton addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.titleView = titleButton;
     
+    
+    
+    self.titleButton = titleButton;
     
     
     
@@ -287,13 +305,60 @@
     self.tableView.backgroundColor = CJColor(226, 226, 226);
     
     // 设置tableView额外滚动区域
-//    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, CJStatusTableBorder, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, CJStatusTableBorder, 0);
     
     // 去除tableView的分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     
 }
+
+
+/**
+ *  获取用户信息
+ */
+- (void)setupUserData
+{
+    // 刷新数据(向新浪获取更新的微博数据)
+    // 1.创建请求管理对象
+    AFHTTPRequestOperationManager *mgr = [AFHTTPRequestOperationManager manager];
+    
+    // 2.封装请求参数
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = [CJAccountTool account].access_token;
+    params[@"uid"] = @([CJAccountTool account].uid);
+    
+    // 3.发送请求
+    [mgr GET:@"https://api.weibo.com/2/users/show.json" parameters:params
+     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         // 字典转模型
+         CJUser *user = [CJUser objectWithKeyValues:responseObject];
+         // 设置标题文字
+         [self.titleButton setTitle:user.name forState:UIControlStateNormal];
+         // 保存昵称
+         CJAccount *account = [CJAccountTool account];
+         account.name = user.name;
+         [CJAccountTool saveAccount:account];
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         
+     }];
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 - (void)findFriend
 {

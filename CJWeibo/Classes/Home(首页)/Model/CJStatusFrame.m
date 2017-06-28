@@ -65,7 +65,7 @@
     _nameLabelF = CGRectMake(nameLabelX, nameLabelY, nameLabelSize.width, nameLabelSize.height);
     
     // 4.会员图标
-    if (status.user.mbtype)
+    if (status.user.mbtype > 2)
     {
         CGFloat vipViewX = CGRectGetMaxX(_nameLabelF) + CJStatusCellBorder;
         CGFloat vipViewY = nameLabelY;

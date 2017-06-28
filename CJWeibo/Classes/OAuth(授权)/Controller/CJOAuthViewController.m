@@ -32,7 +32,7 @@
     
     // 2.加载授权页面(新浪提供的登录页面)
     
-    NSURL *url = [NSURL URLWithString:@"https://api.weibo.com/oauth2/authorize?client_id=3024216879&redirect_uri=https://www.baidu.com"];
+    NSURL *url = [NSURL URLWithString:CJLoginURL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
     
@@ -107,6 +107,9 @@
         // 5.用 AFN框架 发送POST请求给新浪,通过code换取一个AccessToken
         [self accessTokenWithCode:code];
 
+        
+        // 返回NO,保证在登录成功后看不到回调页面(不加载回调页面请求)
+        return NO;
     }
     
     return YES;
@@ -148,11 +151,11 @@
     
     // 2.封装请求参数
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"client_id"] = @"3024216879";
-    params[@"client_secret"] = @"3227b9117b769892bca3b7b32dc1eb36";
+    params[@"client_id"] = CJAppKey;
+    params[@"client_secret"] = CJAppSecret;
     params[@"grant_type"] = @"authorization_code";
     params[@"code"] = code;
-    params[@"redirect_uri"] = @"https://www.baidu.com";
+    params[@"redirect_uri"] = CJRedirectURI;
     
     
     
@@ -184,14 +187,6 @@
         [MBProgressHUD hideHUD];
     }];
 }
-
-
-
-
-
-
-
-
 
 
 

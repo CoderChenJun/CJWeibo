@@ -25,7 +25,7 @@
 
 
 /**
- *  是否为会员
+ *  是否为会员(>2 是会员)
  */
 @property (nonatomic, assign) int mbtype;
 /**

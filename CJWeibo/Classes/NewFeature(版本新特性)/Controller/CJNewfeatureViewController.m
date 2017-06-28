@@ -67,7 +67,21 @@
     {
         // 设置图片
         UIImageView *imageView = [[UIImageView alloc] init];
-        NSString *name = [NSString stringWithFormat:@"new_feature_%d",index+1];
+        
+        
+        NSString *name = nil;
+        
+        
+        if (fourInch)// 4英寸
+        {
+            name = [NSString stringWithFormat:@"new_feature_%d-568h",index+1];
+        }
+        else
+        {
+            name = [NSString stringWithFormat:@"new_feature_%d",index+1];
+        }
+        
+        
         imageView.image = [UIImage imageWithNamed:name];
         
         // 设置 frame

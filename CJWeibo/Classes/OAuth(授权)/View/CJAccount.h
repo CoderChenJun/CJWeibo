@@ -28,6 +28,10 @@
 @property (nonatomic, strong) NSDate *expiresTime;
 
 
+/**
+ *  用户昵称
+ */
+@property (nonatomic, copy) NSString *name;
 
 
 + (instancetype)accountWithDict:(NSDictionary *)dict;

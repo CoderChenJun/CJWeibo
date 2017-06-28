@@ -1,0 +1,455 @@
+//
+//  CJStatusCell.m
+//  CJWeibo
+//
+//  Created by app on 16/5/27.
+//  Copyright © 2016年 ChenJun. All rights reserved.
+//
+
+#import "CJStatusCell.h"
+
+
+
+@interface CJStatusCell()
+
+/** 顶部的View */
+@property (nonatomic, strong) UIImageView *topView;
+/** 头像 */
+@property (nonatomic, strong) UIImageView *iconView;
+/** 会员图标 */
+@property (nonatomic, strong) UIImageView *vipView;
+/** 配图 */
+@property (nonatomic, strong) UIImageView *photoView;
+
+/** 昵称 */
+@property (nonatomic, strong) UILabel *nameLabel;
+/** 时间 */
+@property (nonatomic, strong) UILabel *timeLabel;
+/** 来源 */
+@property (nonatomic, strong) UILabel *sourceLabel;
+/** 正文\内容 */
+@property (nonatomic, strong) UILabel *contentLabel;
+
+
+
+
+
+
+/** 被转发微博的View(父控件) */
+@property (nonatomic, strong) UIImageView *retweetView;
+/** 被转发微博作者的昵称 */
+@property (nonatomic, strong) UILabel *retweetNameLabel;
+/** 被转发微博的正文\内容 */
+@property (nonatomic, strong) UILabel *retweetContentLabel;
+/** 被转发微博的配图 */
+@property (nonatomic, strong) UIImageView *retweetPhotoView;
+
+
+/** 微博的工具条 */
+@property (nonatomic, strong) UIImageView *statusToolBar;
+
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+@implementation CJStatusCell
+
+
++ (instancetype)cellWithTableView:(UITableView *)tableView
+{
+static NSString *ID = @"cell";
+// 从缓存池中取cell
+CJStatusCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+// 如果缓存池中没有，则重新创建
+if(cell == nil)
+{
+cell = [[CJStatusCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+
+
+// 设置 cell 的背景色透明
+cell.backgroundColor = [UIColor clearColor];
+
+
+}
+return cell;
+}
+
+
+
+
+
+
+
+
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+if (self)
+{
+
+// 1.添加原创微博内部的子控件
+[self setupOriginalSubviews];
+
+
+
+// 2.添加被转发微博内部的子控件
+[self setupRetweetSubviews];
+
+
+
+// 3.添加微博的工具条
+[self setupStatusToolBar];
+
+
+}
+return self;
+}
+
+/**
+*  添加原创微博内部的子控件
+*/
+- (void)setupOriginalSubviews
+{
+
+#warning 设置cell选中时的背景(还未做)
+//    // 设置cell选中时的背景
+//    UIImageView *bgView = [[UIImageView alloc] init];
+//    bgView.image = [UIImage resizedImageWithName:@"common_card_background_highlighted"];
+////    bgView.backgroundColor = [UIColor redColor];
+//    self.selectedBackgroundView = bgView;
+
+
+
+
+
+
+
+
+
+
+
+/** 1.顶部的View */
+UIImageView *topView = [[UIImageView alloc] init];
+topView.image = [UIImage resizedImageWithName:@"timeline_card_top_background"];// 设置圆角背景图片
+[self.contentView addSubview:topView];
+self.topView = topView;
+
+
+/** 2.头像 */
+UIImageView *iconView = [[UIImageView alloc] init];
+[self.topView addSubview:iconView];
+self.iconView = iconView;
+
+
+/** 3.会员图标 */
+UIImageView *vipView = [[UIImageView alloc] init];
+[self.topView addSubview:vipView];
+self.vipView = vipView;
+
+
+/** 4.配图 */
+UIImageView *photoView = [[UIImageView alloc] init];
+[self.topView addSubview:photoView];
+self.photoView = photoView;
+
+
+
+
+/** 5.昵称 */
+UILabel *nameLabel = [[UILabel alloc] init];
+nameLabel.font = CJStatusNameFont;// 设置字体
+nameLabel.backgroundColor = [UIColor clearColor];// Label背景色透明
+[self.topView addSubview:nameLabel];
+self.nameLabel = nameLabel;
+
+
+/** 6.时间 */
+UILabel *timeLabel = [[UILabel alloc] init];
+timeLabel.font = CJStatusTimeFont;// 设置字体
+timeLabel.textColor = CJColor(240, 140, 19);// 设置字体的颜色
+timeLabel.backgroundColor = [UIColor clearColor];// Label背景色透明
+[self.topView addSubview:timeLabel];
+self.timeLabel = timeLabel;
+
+
+/** 7.来源 */
+UILabel *sourceLabel = [[UILabel alloc] init];
+sourceLabel.font = CJStatusSourceFont;// 设置字体
+sourceLabel.backgroundColor = [UIColor clearColor];// Label背景色透明
+[self.topView addSubview:sourceLabel];
+self.sourceLabel = sourceLabel;
+
+
+/** 8.正文\内容 */
+UILabel *contentLabel = [[UILabel alloc] init];
+contentLabel.font = CJStatusContentFont;// 设置字体
+contentLabel.backgroundColor = [UIColor clearColor];// Label背景色透明
+contentLabel.numberOfLines = 0;// 设置换行
+[self.topView addSubview:contentLabel];
+self.contentLabel = contentLabel;
+
+}
+
+/**
+*  添加被转发微博内部的子控件
+*/
+- (void)setupRetweetSubviews
+{
+
+/** 1.被转发微博的View(父控件) */
+UIImageView *retweetView = [[UIImageView alloc] init];
+retweetView.image = [UIImage resizedImageWithName:@"timeline_retweet_background" left:0.8 top:0.5 ];// 设置被转发微博区域的背景图片
+
+[self.topView addSubview:retweetView];
+self.retweetView = retweetView;
+
+
+/** 2.被转发微博作者的昵称 */
+UILabel *retweetNameLabel = [[UILabel alloc] init];
+retweetNameLabel.font = CJRetweetNameFont;// 设置字体
+retweetNameLabel.textColor = CJColor(67, 107, 163);
+retweetNameLabel.backgroundColor = [UIColor clearColor];// Label背景色透明
+[self.retweetView addSubview:retweetNameLabel];
+self.retweetNameLabel = retweetNameLabel;
+
+
+/** 3.被转发微博的正文\内容 */
+UILabel *retweetContentLabel = [[UILabel alloc] init];
+retweetContentLabel.font = CJRetweetContentFont;// 设置字体
+retweetContentLabel.backgroundColor = [UIColor clearColor];// Label背景色透明
+retweetContentLabel.numberOfLines = 0;// 设置换行
+retweetContentLabel.textColor = CJColor(90, 90, 90);
+[self.retweetView addSubview:retweetContentLabel];
+self.retweetContentLabel = retweetContentLabel;
+
+
+/** 4.被转发微博的配图 */
+UIImageView *retweetPhotoView = [[UIImageView alloc] init];
+[self.retweetView addSubview:retweetPhotoView];
+self.retweetPhotoView = retweetPhotoView;
+
+
+}
+
+/**
+*  添加微博的工具条
+*/
+- (void)setupStatusToolBar
+{
+
+/** 1.微博的工具条 */
+UIImageView *statusToolBar = [[UIImageView alloc] init];
+statusToolBar.image = [UIImage resizedImageWithName:@"timeline_card_bottom_background"];// 设置圆角背景图片
+[self.contentView addSubview:statusToolBar];
+self.statusToolBar = statusToolBar;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+/**
+*  拦截frame的设置,在这里设置cell的frame
+*/
+- (void)setFrame:(CGRect)frame
+{
+frame.origin.x = CJStatusTableBorder;
+frame.origin.y += CJStatusTableBorder;
+frame.size.height -= CJStatusTableBorder;
+
+frame.size.width -= CJStatusTableBorder * 2;// 注：还要在CJStatusFrame   - (void)setStatus:(CJStatus *)status方法中   设置cell的宽度   CGFloat cellW = [UIScreen mainScreen].bounds.size.width - 10;
+
+[super setFrame:frame];
+
+
+
+
+//    CJLog(@"cell的X值 : %f",frame.origin.x);
+//    CJLog(@"cell的宽度 : %f",frame.size.width);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+*  在这个方法中设置子控件的frame数据和显示数据
+*/
+- (void)setStatusFrame:(CJStatusFrame *)statusFrame
+{
+_statusFrame = statusFrame;
+
+// 1. 设置原创微博数据
+[self setupOriginalData];
+
+// 2.设置被转发微博数据
+[self  setupRetweetData];
+
+// 3.设置微博工具条数据
+[self  setupStatusToolBarData];
+}
+
+
+
+/**
+*  设置原创微博数据
+*/
+- (void)setupOriginalData
+{
+
+CJStatus *status = self.statusFrame.status;
+CJUser *user = status.user;
+
+
+
+// 1.topView
+self.topView.frame = self.statusFrame.topViewF;
+
+
+// 2.头像
+[self.iconView setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:[UIImage imageWithNamed:@"avatar_default_small"]];
+self.iconView.frame = self.statusFrame.iconViewF;
+
+
+// 3.昵称
+self.nameLabel.text = user.name;
+self.nameLabel.frame = self.statusFrame.nameLabelF;
+
+
+// 4.vip
+if (user.isVip)
+{
+self.vipView.hidden = NO;
+self.vipView.image = [UIImage imageWithNamed:@"common_icon_membership"];
+self.vipView.frame = self.statusFrame.vipViewF;
+}
+else
+{
+self.vipView.hidden = YES;
+}
+
+
+// 4.时间
+self.timeLabel.text = status.created_at;
+self.timeLabel.frame = self.statusFrame.timeLabelF;
+
+
+// 5.来源
+self.sourceLabel.text = status.source;
+self.sourceLabel.frame = self.statusFrame.sourceLabelF;
+
+
+// 6.正文
+self.contentLabel.text = status.text;
+self.contentLabel.frame = self.statusFrame.contentLabelF;
+
+// 7.配图
+if (status.thumbnail_pic)
+{
+self.photoView.hidden = NO;
+self.photoView.frame = self.statusFrame.photoViewF;
+[self.photoView setImageWithURL:[NSURL URLWithString:status.thumbnail_pic] placeholderImage:[UIImage imageWithNamed:@"timeline_image_placeholder"]];
+}
+else
+{
+self.photoView.hidden = YES;
+}
+
+
+
+}
+
+
+
+/**
+*  设置被转发微博数据
+*/
+- (void)setupRetweetData
+{
+
+CJStatus *retweetStatus = self.statusFrame.status.retweet_status;
+CJUser *user = retweetStatus.user;
+
+
+#warning NO-retweetStatus(转发微博没有显示,未查明原因)
+// 1.父控件retweetView
+// 如果有转发微博,赋值数据并显示
+if (retweetStatus)
+{
+
+self.retweetView.hidden = NO;
+self.retweetView.frame = self.statusFrame.retweetViewF;
+
+// 2.昵称
+self.retweetNameLabel.text = user.name;
+self.retweetNameLabel.frame = self.statusFrame.retweetNameLabelF;
+
+// 3.正文
+self.retweetContentLabel.text = retweetStatus.text;
+self.retweetContentLabel.frame = self.statusFrame.retweetContentLabelF;
+
+// 4.配图
+if (retweetStatus.thumbnail_pic)
+{
+self.retweetPhotoView.hidden = NO;
+self.retweetPhotoView.frame = self.statusFrame.retweetPhotoViewF;
+[self.retweetPhotoView setImageWithURL:[NSURL URLWithString:retweetStatus.thumbnail_pic] placeholderImage:[UIImage imageWithNamed:@"timeline_image_placeholder"]];
+}
+else
+{
+self.retweetPhotoView.hidden = YES;
+}
+}
+else
+{
+self.retweetView.hidden = YES;
+}
+
+}
+
+
+/**
+*  设置微博工具条数据
+*/
+- (void)setupStatusToolBarData
+{
+self.statusToolBar.frame = self.statusFrame.statusToolBarF;
+}
+
+
+
+
+
+@end
