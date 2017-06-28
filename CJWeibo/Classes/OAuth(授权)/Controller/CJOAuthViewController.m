@@ -99,7 +99,7 @@
     if (range.length)
     {
         // 4.截取code=后面的请求标记(经过用户授权成功的)
-        int loc = range.location + range.length;
+        unsigned long loc = range.location + range.length;
         NSString *code = [urlStr substringFromIndex:loc];
         CJLog(@"url---%@\ncode---%@",urlStr,code);
         
