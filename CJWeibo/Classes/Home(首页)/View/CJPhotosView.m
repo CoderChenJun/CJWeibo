@@ -49,6 +49,7 @@
         CJPhoto *CJphoto = self.photos[i];
         
         // 将缩略图换成中等尺寸图片
+        CJphoto = [CJPhoto mj_objectWithKeyValues:CJphoto];
         NSString *photoUrl = [CJphoto.thumbnail_pic stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
         mjphoto.url = [NSURL URLWithString:photoUrl]; // 图片路径
         
