@@ -12,6 +12,7 @@
 
 
 
+
 @interface CJOAuthViewController () <UIWebViewDelegate>
 
 @end
@@ -167,6 +168,8 @@
 
           // 4.将收到的字典数据转为模型
           CJAccount *account = [CJAccount accountWithDict:responseObject];
+          
+//          CJAccount *account = [CJAccount mj_objectWithKeyValues:responseObject];
           
           // 5.存储模型数据
           [CJAccountTool saveAccount:account];

@@ -173,7 +173,7 @@
     [mgr GET:@"https://api.weibo.com/2/statuses/home_timeline.json" parameters:params
      success:^(AFHTTPRequestOperation *operation, id responseObject) {
          // 将字典数组转为模型数组(里面放的就是CJStatus模型)
-         NSArray *statusArray = [CJStatus objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
+         NSArray *statusArray = [CJStatus mj_objectArrayWithKeyValuesArray:responseObject[@"statuses"]];
          // 创建frame模型对象
          NSMutableArray *statusFrameArray = [NSMutableArray array];
          for (CJStatus *status in statusArray) {

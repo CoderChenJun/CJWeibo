@@ -137,7 +137,8 @@
     frame.origin.y += CJStatusTableBorder;
     frame.size.height -= CJStatusTableBorder;
     
-    frame.size.width -= CJStatusTableBorder * 2;// 注：还要在CJStatusFrame   - (void)setStatus:(CJStatus *)status方法中   设置cell的宽度   CGFloat cellW = [UIScreen mainScreen].bounds.size.width - 10;
+    frame.size.width -= CJStatusTableBorder * 2;
+    // 注：还要在CJStatusFrame   - (void)setStatus:(CJStatus *)status方法中   设置cell的宽度   CGFloat cellW = [UIScreen mainScreen].bounds.size.width - 10;
     
     [super setFrame:frame];
     

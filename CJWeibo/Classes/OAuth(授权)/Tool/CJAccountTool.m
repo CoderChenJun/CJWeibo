@@ -35,6 +35,13 @@
     
     
     [NSKeyedArchiver archiveRootObject:account toFile:CJAccountFile];
+    
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:account];
+    [userDefaults setObject:data forKey:@"account_key"];
+    [userDefaults synchronize];
+    
 
 }
 
@@ -49,11 +56,18 @@
     
     
     
+//    // 取出账号
+//    CJAccount *account = [NSKeyedUnarchiver unarchiveObjectWithFile:CJAccountFile];
     
     
     
-    // 取出账号
-    CJAccount *account = [NSKeyedUnarchiver unarchiveObjectWithFile:CJAccountFile];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [userDefaults objectForKey:@"account_key"];
+    CJAccount *account = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    
+    
 
     // 判断账号是否过期
     NSDate *now = [NSDate date];

@@ -50,6 +50,18 @@
 }
 
 
+-(void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    for (UIView *child in self.tabBar.subviews)
+    {
+        if ([child isKindOfClass:NSClassFromString(@"UITabBarButton")])
+        {
+            [child removeFromSuperview];
+        }
+    }
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

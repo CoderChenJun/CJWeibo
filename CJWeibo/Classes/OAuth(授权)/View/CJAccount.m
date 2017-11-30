@@ -33,6 +33,8 @@
  */
 - (instancetype)initWithCoder:(NSCoder *)decoder
 {
+    
+    NSLog(@"调用了initWithCoder:方法");
     if (self = [super init])
     {
         self.access_token = [decoder decodeObjectForKey:@"access_token"];
@@ -44,6 +46,9 @@
         
         self.name = [decoder decodeObjectForKey:@"name"];
         
+        
+        
+        self.isRealName = [decoder decodeBoolForKey:@"isRealName"];
     }
     return self;
 }
@@ -53,6 +58,8 @@
  */
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
+    
+    NSLog(@"调用了encodeWithCoder:方法");
     [encoder encodeObject:self.access_token forKey:@"access_token"];
     
     [encoder encodeObject:self.name forKey:@"name"];
@@ -63,6 +70,9 @@
     
     [encoder encodeObject:self.expiresTime forKey:@"expiresTime"];
 
+    
+    [encoder encodeBool:self.isRealName forKey:@"isRealName"];
+    
 }
 
 
